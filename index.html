@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>still, with care ♡</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #fff;
+      color: #655247;
+      font-family: "Cormorant Garamond", serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 28px 16px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 540px;
+      text-align: center;
+    }
+
+    .ornament {
+      color: #b68b86;
+      font-size: 22px;
+      letter-spacing: 8px;
+      margin-bottom: 14px;
+    }
+
+    .card {
+      position: relative;
+      background: #f8f1e6;
+      border: 1px solid #d9c4a6;
+      outline: 1px solid #e8d9c5;
+      outline-offset: -8px;
+      padding: 42px 25px;
+      box-shadow: 0 8px 28px #78634b12;
+    }
+
+    .small-title {
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #9d7b70;
+    }
+
+    h1 {
+      font-family: "Parisienne", cursive;
+      font-weight: 400;
+      font-size: clamp(42px, 10vw, 60px);
+      line-height: 1.2;
+      margin: 22px 0 12px;
+      color: #875f60;
+    }
+
+    .intro {
+      font-size: 19px;
+      line-height: 1.7;
+      margin: 0 auto 25px;
+      max-width: 340px;
+      white-space: pre-line;
+    }
+
+    .divider {
+      color: #b68b86;
+      margin: 22px 0;
+      letter-spacing: 7px;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      max-width: 310px;
+      margin: 12px auto;
+      padding: 13px 18px;
+      border: 1px solid #c9aaa0;
+      background: #fffaf3;
+      color: #795b55;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 19px;
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+
+    button:hover {
+      background: #f1e2d8;
+      transform: translateY(-1px);
+    }
+
+    .letter {
+      display: none;
+      text-align: left;
+      margin-top: 22px;
+      padding: 22px 18px;
+      border-top: 1px solid #ddc9b4;
+      font-size: 19px;
+      line-height: 1.9;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+
+    .letter.open {
+      display: block;
+      animation: appear .35s ease;
+    }
+
+    .signature {
+      text-align: right;
+      margin-top: 20px;
+      font-family: "Parisienne", cursive;
+      font-size: 27px;
+      color: #875f60;
+    }
+
+    footer {
+      margin-top: 25px;
+      font-size: 16px;
+      color: #a18b7e;
+      letter-spacing: 1px;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -30px;
+      color: #d8a9a9;
+      pointer-events: none;
+      animation: floatUp 5s linear forwards;
+      z-index: 5;
+    }
+
+    @keyframes floatUp {
+      to {
+        transform: translateY(-110vh) rotate(20deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <div class="ornament">♡ ❦ ♡</div>
+
+    <section class="card">
+      <div class="small-title">a little something for Pk kung</div>
+
+      <h1>still care</h1>
+
+      <p class="intro" id="introText">เขียนข้อความของเลิฟตรงนี้</p>
+
+      <div class="divider">──── ❦ ────</div>
+
+      <button onclick="toggleLetter('letterOne', this)">
+        open your letter ♡
+      </button>
+
+      <div class="letter" id="letterOne">
+ใส่ข้อความจดหมายของเลิฟตรงนี้
+
+        <div class="signature">with care, ♡</div>
+      </div>
+
+      <button onclick="makeHearts()">
+        a little heart for you ♡
+      </button>
+
+      <div class="divider">♡ ❦ ♡</div>
+    </section>
+
+    <footer> sorry for everythings, babe</footer>
+  </main>
+
+  <script>
+    function toggleLetter(id, button) {
+      const letter = document.getElementById(id);
+      letter.classList.toggle("open");
+
+      button.textContent = letter.classList.contains("open")
+        ? "close your letter ♡"
+        : "open your letter ♡";
+    }
+
+    function makeHearts() {
+      for (let i = 0; i < 12; i++) {
+        const heart = document.createElement("span");
+        heart.className = "heart";
+        heart.textContent = ["♡", "♥", "୨୧"][i % 3];
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (16 + Math.random() * 15) + "px";
+        heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 6500);
+      }
+    }
+  </script>
+</body>
+</html>
